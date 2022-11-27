@@ -1,4 +1,4 @@
-namespace All4Auto.Core.ViewModels.Account
+﻿namespace All4Auto.Core.ViewModels.Account
 {
     using System.ComponentModel.DataAnnotations;
 
@@ -11,6 +11,8 @@ namespace All4Auto.Core.ViewModels.Account
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; } = null!;
+
+
 
         [UIHint("hidden")]
         public string? ReturnUrl { get; set; }
