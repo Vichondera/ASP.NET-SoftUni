@@ -1,13 +1,13 @@
-﻿using All4Auto.Core.Models.Vehicles;
-using All4Auto.Core.ViewModels;
-
-namespace All4Auto.Core.Contracts
+namespace All4Auto.Core.Models.Catalog
 {
-    public interface IMakeService
+    using All4Auto.DataProcessor.Models.Vehicles;
+    
+    public class MakeViewModel
     {
-        // Task<int> Create(MakeModel model, int agentId);
+        public int Id { get; set; }
+        
+        public string Name { get; set; } = null!;
 
-        Task<MakeQueryModel> All();
-
+        public IEnumerable<Model> Models { get; set; } = null!;
     }
 }
