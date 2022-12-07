@@ -1,7 +1,7 @@
 using All4Auto.Core.Constants;
 using All4Auto.DataProcessor;
 using All4Auto.DataProcessor.Models.Account;
-
+using All4Auto.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,7 +15,7 @@ builder.Services.AddDbContext<All4AutoDbContext>(options =>
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<UserProfile>(options =>
+builder.Services.AddDefaultIdentity<AppUser>(options =>
 {
     options.SignIn.RequireConfirmedAccount = true;
     options.Password.RequireNonAlphanumeric = true;
@@ -28,19 +28,22 @@ builder.Services.AddDefaultIdentity<UserProfile>(options =>
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/Account/Login";
+    options.LogoutPath = "/Account/Logout";
 });
 
 builder.Services.AddAuthorization(options =>
 {
-    options.AddPolicy("CanDeleteProduct", policy =>
+    options.AddPolicy("CanDeleteCar", policy =>
         policy.RequireAssertion(context =>
-        context.User.IsInRole(RoleConstants.Owner) && context.User.IsInRole(RoleConstants.Administrator)));
+        context.User.IsInRole(RoleConstants.Owner) &&
+        context.User.IsInRole(RoleConstants.Administrator)));
 });
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddAppServices();
 
-//builder.Services.AddScoped<IVehicleService, VehicleService>();
-//builder.Services.AddScoped<IRepository, Repository>();
+
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -68,12 +71,10 @@ app.UseEndpoints(endpoints =>
          areaName: "Garage",
          pattern: "Garage/{controller=Home}/{action=Index}"
      );
-
     endpoints.MapControllerRoute(
         name: "areaRoute",
         pattern: "{area:exists}/{controller}/{action}"
     );
-
     endpoints.MapControllerRoute(
         name: "default",
         pattern: "{controller=Home}/{action=Index}/{id?}"
