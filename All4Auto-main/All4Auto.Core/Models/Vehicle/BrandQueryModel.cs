@@ -1,10 +1,11 @@
-﻿using All4Auto.DataProcessor.Models.Vehicles;
-
 namespace All4Auto.Core.Models.Vehicles
 {
-    public class MakeQueryModel
+    using All4Auto.DataProcessor.Models.Vehicles;
+    
+    public class BrandQueryModel
     {
         public int TotalMakesCount { get; set; }
+        
         public ICollection<Make> Makes { get; set; }
             = new List<Make>();
     }
