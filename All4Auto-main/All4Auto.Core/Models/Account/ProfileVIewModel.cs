@@ -1,4 +1,4 @@
-﻿namespace AppUser.Models
+namespace All4Auto.Core.Models.Account
 {
     public class ProfileVIewModel
     {
