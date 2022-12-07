@@ -1,7 +1,6 @@
-﻿namespace All4Auto.Core.ViewModels.Account
+namespace All4Auto.Core.Models.Account
 {
     using System.ComponentModel.DataAnnotations;
-
     public class LoginViewModel
     {
         [Required]
@@ -11,8 +10,6 @@
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; } = null!;
-
-
 
         [UIHint("hidden")]
         public string? ReturnUrl { get; set; }
