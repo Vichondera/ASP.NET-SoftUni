@@ -42,8 +42,6 @@ builder.Services.AddAuthorization(options =>
 builder.Services.AddControllersWithViews();
 builder.Services.AddAppServices();
 
-
-
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
