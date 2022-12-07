@@ -1,4 +1,4 @@
-namespace All4Auto.DataProcessor.Models.Vehicles
+namespace All4Auto.DataProcessor.Models.Vehicle
 {
     using All4Auto.DataProcessor.Models.CarGarage;
     using System.ComponentModel.DataAnnotations;
