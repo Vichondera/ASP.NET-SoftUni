@@ -1,4 +1,4 @@
-namespace All4Auto.Core.ViewModels
+namespace All4Auto.Core.Models
 {
     public class ErrorViewModel
     {
