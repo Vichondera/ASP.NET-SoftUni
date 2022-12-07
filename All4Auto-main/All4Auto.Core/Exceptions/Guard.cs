@@ -1,4 +1,4 @@
-﻿namespace All4Auto.Core.Exceptions
+namespace All4Auto.Core.Exceptions
 {
     using All4Auto.Core.Constants;
     public class Guard : IGuard
