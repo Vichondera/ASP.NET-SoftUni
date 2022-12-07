@@ -1,4 +1,4 @@
-﻿namespace All4Auto.Core.ViewModels.Account
+namespace All4Auto.Core.Models.Account
 {
     using System.ComponentModel.DataAnnotations;
 
