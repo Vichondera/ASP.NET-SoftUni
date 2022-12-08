@@ -1,0 +1,25 @@
+body {
+    background-image: url(../img/background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+/* Dashed border */
+hr.dashed {
+    border-top: 3px dashed #bbb;
+}
+
+/* Dotted border */
+hr.dotted {
+    border-top: 3px dotted #bbb;
+}
+
+/* Solid border */
+hr.solid {
+    border-top: 13px solid #bbb;
+}
+
+/* Rounded border */
+hr.rounded {
+    border-top: 14px solid #bbb;
+    border-radius: 15px;
+}
