@@ -3,11 +3,10 @@ namespace All4Auto.DataProcessor
     using All4Auto.DataProcessor.Configurations;
     using All4Auto.DataProcessor.Models.Account;
     using All4Auto.DataProcessor.Models.CarGarage;
-    using All4Auto.DataProcessor.Models.Garage;
     using All4Auto.DataProcessor.Models.Vehicles;
 
-    using Microsoft.EntityFrameworkCore;
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore;
 
     public class All4AutoDbContext : IdentityDbContext<UserProfile>
     {
@@ -18,29 +17,28 @@ namespace All4Auto.DataProcessor
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.ApplyConfiguration(new MakeConfiguration());
-            builder.ApplyConfiguration(new ModelConfiguration());
-            
+            builder.ApplyConfiguration(new CarBrandConfiguration());
+            builder.ApplyConfiguration(new CarModelConfiguration());
+            builder.ApplyConfiguration(new PartBrandConfiguration());
+            builder.ApplyConfiguration(new MainPartsConfiguration());
 
-            builder.Entity<OwnedModel>(entity =>
+            builder.Entity<UserCar>(entity =>
             {
-                entity.HasKey(ct => new { ct.OwnerId, ct.ModelId });
+                entity.HasKey(ct => new { ct.OwnerId, ct.CarId });
             });
 
             base.OnModelCreating(builder);
         }
 
-        public DbSet<UserProfile> UsersProfiles { get; set; } = null!;
-
-        public DbSet<CarBrand> Makes { get; set; } = null!;
-        public DbSet<CarModel> Models { get; set; } = null!;
-      //  public DbSet<Vehicle> Vehicles { get; set; } = null!;
+        public DbSet<CarBrand> CarBrands { get; set; } = null!;
+        public DbSet<CarModel> CarModels { get; set; } = null!;
 
         public DbSet<Garage> Garages { get; set; } = null!;
 
         public DbSet<Owner> Owners { get; set; } = null!;
 
-        public DbSet<OwnedModel> OwnedModels { get; set; } = null!;
+        public DbSet<UserCar> UserCars { get; set; } = null!;
 
+        public DbSet<PartBrand> PartBrands { get; set; } = null!;
     }
 }
